@@ -1,0 +1,173 @@
+unit Ufrm_Login;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.FMTBcd, Data.DB,
+  Data.SqlExpr;
+
+type
+  Tfrm_Login = class(TForm)
+    Label1: TLabel;
+    EditSenha: TEdit;
+    btnAcessar: TButton;
+    btnCancelar: TButton;
+    DS_Usuarios: TDataSource;
+    SQL_Login: TSQLQuery;
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnAcessarClick(Sender: TObject);
+    procedure EditSenhaKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    procedure AcessarLogin;
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_Login: Tfrm_Login;
+
+implementation
+
+{$R *.dfm}
+
+uses Ufrm_Principal, U_DMDados, U_Login;
+
+procedure Tfrm_Login.btnAcessarClick(Sender: TObject);
+//var
+//  Usuario : TUsuario;
+
+begin
+//  if (Trim(EditSenha.Text)= '') then
+//      begin
+//        showMessage('Insira uma senha!');
+//        EditSenha.SetFocus;
+//        abort;
+//  end;
+//
+//  Usuario := TUsuario.Create;
+//  try
+//    Usuario.Senha := trim(EditSenha.Text);
+//    if Usuario.Logar then
+//      begin
+//      frmLogin.Visible :=false;
+//      //frmPrincipal.Visible := false;
+//      frmPrincipal.ShowModal;
+//    end
+//    else
+//      begin
+//        showMessage('Senha inválida!');
+//        EditSenha.SetFocus;
+//        abort;
+//      end;
+//  finally
+//
+//  end;
+
+
+
+    AcessarLogin;
+end;
+
+
+
+procedure Tfrm_Login.btnCancelarClick(Sender: TObject);
+begin
+    Application.Terminate
+end;
+
+procedure Tfrm_Login.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+   // Se Tecla pressionada = ESC, irá fechar a tela - ESC (#27)
+   if Key = #27 then
+    Application.Terminate;
+    //utilizar enter como tab
+//   if key = #13 then
+//      Perform(WM_NEXTDLGCTL,0,0);
+
+end;
+
+procedure Tfrm_Login.EditSenhaKeyPress(Sender: TObject; var Key: Char);
+begin
+    //acessar com enter
+    If key = #13 then
+      AcessarLogin;
+
+end;
+
+
+//metodo para acessar - declarar nos metodos privados
+procedure Tfrm_Login.AcessarLogin;
+var
+  Usuario : TUsuario;
+
+begin
+  if (Trim(EditSenha.Text)= '') then
+      begin
+        Application.MessageBox('Insira uma senha!','Atenção',MB_OK+MB_ICONWARNING);
+        EditSenha.SetFocus;
+        abort;
+  end;
+
+  Usuario := TUsuario.Create;
+  try
+    Usuario.Senha := trim(EditSenha.Text);
+    if Usuario.Logar then
+      begin
+      frm_Login.Visible :=false;
+      //frmPrincipal.Visible := false;
+      frmPrincipal.stbStatus.Panels[0].Text := 'Usuário: '+ Usuario.Usuario;
+      frm_Login.EditSenha.Text := Usuario.Senha;
+      frmPrincipal.Show;
+    end
+    else
+      begin
+        Application.MessageBox('Senha inválida!','Atenção',MB_OK+MB_ICONWARNING);
+        EditSenha.Clear;
+        EditSenha.SetFocus;
+        abort;
+      end;
+  finally
+    FreeAndNil(Usuario);
+  end;
+end;
+
+
+
+
+
+{procedure TfrmLogin.AcessarLogin;
+begin
+    SQL_Login.Close;
+    SQL_Login.SQL.Clear;
+    SQL_Login.SQL.Add('SELECT SENHA FROM USUARIOS WHERE SENHA='+QuotedStr(EditSenha.Text));
+    SQL_Login.Open;
+
+
+    if (Trim(EditSenha.Text)<> '') then
+      begin
+        if (EditSenha.Text = '123') then
+          begin
+            frmLogin.Visible :=false;
+            frmPrincipal.Visible := false;
+            frmPrincipal.ShowModal;
+          end
+        else
+          begin
+            ShowMessage('Senha Incorreta');
+            EditSenha.Clear;
+            EditSenha.SetFocus;
+            abort;
+          end;
+      end
+      else
+        begin
+            showMessage('Insira uma senha!');
+            EditSenha.SetFocus;
+        end;
+end;  }
+
+
+end.

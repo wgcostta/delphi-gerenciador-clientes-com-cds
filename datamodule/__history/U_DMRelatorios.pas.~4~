@@ -1,0 +1,33 @@
+unit U_DMRelatorios;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, frxClass, frxDBSet, frxExportPDF,
+  frxExportCSV;
+
+type
+  TDM_Relatorio = class(TDataModule)
+    frxR_Clientes: TfrxReport;
+    frxDB_Clientes: TfrxDBDataset;
+    frxDB_Telefone: TfrxDBDataset;
+    frxDB_Endereco: TfrxDBDataset;
+    frxPDFExport1: TfrxPDFExport;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DM_Relatorio: TDM_Relatorio;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses U_DMDados;
+
+{$R *.dfm}
+
+end.

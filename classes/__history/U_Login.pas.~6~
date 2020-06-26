@@ -1,0 +1,40 @@
+unit U_Login;
+
+interface
+
+  type
+    TUsuario = class
+      private
+        fSenha : String;
+        fUsuario : String;
+      public
+        property Senha: String read fSenha write fSenha;
+        property Usuario: String read fUsuario write fUsuario;
+
+        function Logar: boolean;
+    end;
+
+implementation
+
+uses
+  Data.SqlExpr, U_DMDados;
+
+  function TUsuario.Logar: boolean;
+    begin
+        with TSQLQuery.Create(nil) do
+
+        try
+          SQLConnection := DM_Dados.SQLConnection;
+          sql.Clear;
+          sql.Add('SELECT IDUSUARIO FROM USUARIOS WHERE SENHA = :SENHA AND NOME = :USUARIO');
+          Params[0].AsString := fSenha;
+          Params[1].AsString := fUsuario;
+          Open;
+          result := Fields[0].AsInteger > 0;
+        finally
+          Close;
+          Free;
+        end;
+    end;
+
+end.

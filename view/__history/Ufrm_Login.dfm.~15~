@@ -1,0 +1,75 @@
+object frm_Login: Tfrm_Login
+  Left = 0
+  Top = 0
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'frm_Login'
+  ClientHeight = 194
+  ClientWidth = 384
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnKeyPress = FormKeyPress
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 89
+    Top = 51
+    Width = 25
+    Height = 13
+    Caption = 'Login'
+  end
+  object Label2: TLabel
+    Left = 80
+    Top = 78
+    Width = 34
+    Height = 13
+    Caption = 'Senha:'
+  end
+  object EditSenha: TEdit
+    Left = 120
+    Top = 75
+    Width = 121
+    Height = 21
+    PasswordChar = '*'
+    TabOrder = 1
+    OnKeyPress = EditSenhaKeyPress
+  end
+  object btnAcessar: TButton
+    Left = 104
+    Top = 120
+    Width = 75
+    Height = 25
+    Caption = 'Acessar'
+    TabOrder = 2
+    OnClick = btnAcessarClick
+  end
+  object btnCancelar: TButton
+    Left = 216
+    Top = 120
+    Width = 75
+    Height = 25
+    Caption = 'Cancelar'
+    TabOrder = 3
+    OnClick = btnCancelarClick
+  end
+  object EditUsuario: TEdit
+    Left = 120
+    Top = 48
+    Width = 121
+    Height = 21
+    TabOrder = 0
+    OnKeyPress = EditUsuarioKeyPress
+  end
+  object DS_Usuarios: TDataSource
+    DataSet = DM_Dados.CDS_Usuarios
+    Left = 24
+    Top = 104
+  end
+end

@@ -1,0 +1,46 @@
+unit Ufrm_Endereco;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  Tfrm_Endereco = class(TForm)
+    Label1: TLabel;
+    EditTipoEnd: TEdit;
+    Label2: TLabel;
+    EditEndereco: TEdit;
+    Label3: TLabel;
+    EditNumeroEnd: TEdit;
+    Label4: TLabel;
+    EditCidade: TEdit;
+    Label5: TLabel;
+    EditCep: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Label6: TLabel;
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_Endereco: Tfrm_Endereco;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tfrm_Endereco.Button2Click(Sender: TObject);
+begin
+  system.Close();
+end;
+
+end.

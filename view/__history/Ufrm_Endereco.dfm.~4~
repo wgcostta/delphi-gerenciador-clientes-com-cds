@@ -1,0 +1,145 @@
+object Tfrm_Enderco: TTfrm_Enderco
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsNone
+  Caption = 'Tfrm_Enderco'
+  ClientHeight = 183
+  ClientWidth = 403
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 403
+    Height = 33
+    Align = alTop
+    TabOrder = 0
+    VerticalAlignment = taAlignBottom
+    ExplicitWidth = 437
+    object Label6: TLabel
+      Left = 136
+      Top = 10
+      Width = 107
+      Height = 13
+      Caption = 'Cadastro de Endere'#231'o'
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 158
+    Width = 403
+    Height = 25
+    Align = alBottom
+    TabOrder = 1
+    VerticalAlignment = taAlignBottom
+    ExplicitLeft = 1
+    ExplicitTop = -1
+    ExplicitWidth = 638
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 33
+    Width = 403
+    Height = 125
+    Align = alClient
+    TabOrder = 2
+    ExplicitWidth = 409
+    ExplicitHeight = 120
+    object Label1: TLabel
+      Left = 16
+      Top = 19
+      Width = 24
+      Height = 13
+      Caption = 'Tipo:'
+    end
+    object Label2: TLabel
+      Left = 112
+      Top = 19
+      Width = 49
+      Height = 13
+      Caption = 'Endere'#231'o:'
+    end
+    object Label3: TLabel
+      Left = 341
+      Top = 19
+      Width = 12
+      Height = 13
+      Caption = 'N'#186
+    end
+    object Label4: TLabel
+      Left = 16
+      Top = 65
+      Width = 49
+      Height = 13
+      Caption = 'Cidade:'
+    end
+    object Label5: TLabel
+      Left = 151
+      Top = 65
+      Width = 23
+      Height = 13
+      Caption = 'CEP:'
+    end
+    object Button1: TButton
+      Left = 262
+      Top = 82
+      Width = 57
+      Height = 25
+      Caption = 'Salvar'
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Left = 325
+      Top = 82
+      Width = 57
+      Height = 25
+      Caption = 'Voltar'
+      TabOrder = 1
+      OnClick = Button2Click
+    end
+    object EditCep: TEdit
+      Left = 151
+      Top = 84
+      Width = 97
+      Height = 21
+      TabOrder = 2
+    end
+    object EditCidade: TEdit
+      Left = 16
+      Top = 84
+      Width = 129
+      Height = 21
+      TabOrder = 3
+    end
+    object EditEndereco: TEdit
+      Left = 112
+      Top = 38
+      Width = 223
+      Height = 21
+      TabOrder = 4
+    end
+    object EditNumeroEnd: TEdit
+      Left = 341
+      Top = 38
+      Width = 41
+      Height = 21
+      TabOrder = 5
+    end
+    object EditTipoEnd: TEdit
+      Left = 16
+      Top = 38
+      Width = 90
+      Height = 21
+      TabOrder = 6
+    end
+  end
+end
